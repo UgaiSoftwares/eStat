@@ -1,0 +1,45 @@
+@(message: String, users: Seq[User], inputs: Map[String, String])
+
+@main("Welcome to Play") {
+<div class="container">
+<div class="row">
+<div class="col-xs-3">
+<H1>Menu</H1>
+<form class="form-horizontal" role="form" method="POST" action="/search">
+ <div class="form-group">
+   <label for="t-title" class="control-label">タイトル:</label>
+   <input type="text" id="t-title" class="form-control" name="t-title" value="@inputs("t-title")">
+ </div> <!-- form-group -->
+ <div class="form-group">
+   <label for="abstract" class="control-label">概要:</label>
+   <input type="text" id="abstract" class="form-control" name="abstract" value="@inputs("abstract")">
+ </div> <!-- form-group -->
+ <div class="form-group">
+   <label for="header1" class="control-label">列キー:</label>
+   <input type="text" id="header1" class="form-control" name="header1" value="@inputs("header1")">
+   <label for="header2" class="control-label">行キー:</label>
+   <input type="text" id="header2" class="form-control" name="header2" value="@inputs("header2")">
+   <select name="city" id="city" class="form-control">
+   <option value="">↑入力</option>
+   <option value="city">市町村</option>
+   <option value="pref">都道府県</option>
+   </select>
+ </div> <!-- form-group -->
+ <div class="form-group">
+    <button type="submit" name="html" value="html" class="btn btn-default">検索</button>
+    <button type="submit" name="csv" value="csv" class="btn btn-default">CSV</button>
+ </div> <!-- form-group -->
+</form>
+</div> <!-- col-xs-3 -->
+<div class="col-xs-9">
+<H1>検索結果</H1>
+<table class="table">
+<tr><th>タイトル</th><th>概要</th><th>列キー(列)</th><th>行キー(行)</th><th>値</th></tr>
+@for(user <- users) {
+<tr><td>@user.title</td><td><A HREF="@user.id">@user.name</A></td><td>@user.key1 (@user.colid)</td><td>@user.key2 (@user.rowid)</td><td>@user.valid</td></tr>
+}
+</table>
+</div> <!-- col-xs-9 -->
+</div> <!-- row -->
+</div> <!-- container -->
+}
