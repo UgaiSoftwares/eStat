@@ -68,6 +68,7 @@ object Search extends Controller {
             query.append("?header2 bif:contains '\"" + header2 + "\"' .")
           }
           query.append("} limit 100 ")
+          Logger.debug("Query: " + query.toString())
           val rs = stmt.executeQuery(query.toString())
           while (rs.next()) {
             val o = rs.getObject("abstract")
