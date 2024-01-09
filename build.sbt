@@ -9,7 +9,7 @@ resolvers += Resolver.url("Edulify Repository", url("http://edulify.github.io/mo
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.12"
 
 libraryDependencies ++= Seq(
   jdbc,
