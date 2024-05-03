@@ -12,7 +12,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.13.13"
 
 libraryDependencies ++= Seq(
-  javaJdbc,
+  jdbc,
+  guice,
 //  anorm,
 //  "com.typesafe.play" %% "anorm" % "2.4.0-RC1",
 //  cache,
@@ -20,6 +21,7 @@ libraryDependencies ++= Seq(
 //  "com.edulify" %% "play-hikaricp" % "2.0.3",
   "org.webjars" %% "webjars-play" % "2.9.0",
   "org.webjars" % "bootstrap" % "3.3.2-2",
+  "org.webjars" % "jquery" % "3.7.1",
   "org.webjars" % "d3js" % "3.5.3",
   "org.webjars" % "c3" % "0.4.9",
   ws
