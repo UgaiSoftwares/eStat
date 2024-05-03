@@ -2,13 +2,16 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import play.api.db.DB
+import play.api.db.{DBApi, DefaultDBApi}
 import play.api.Play.current
 import virtuoso.jdbc4.VirtuosoRdfBox
 import virtuoso.jdbc4.VirtuosoExtendedString
 
-object Search extends Controller {
+import javax.inject.Inject
 
+class Search @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+
+  /*
   def index = Action { implicit request =>
     var outString = "Number is"
     var retSeq: Seq[User] = Seq()
@@ -16,7 +19,7 @@ object Search extends Controller {
     var oformat = ""
     request.body.asFormUrlEncoded match {
       case Some(params) => {
-        DB.withConnection { conn =>
+        DefaultDBApi.withConnection { conn =>
           var gaiyo: String = params("abstract")(0)
           var header1: String = params("header1")(0)
           var header2: String = params("header2")(0)
@@ -32,7 +35,7 @@ object Search extends Controller {
             "t-title" -> ttitle,
             "city" -> city
           )
-          Logger.debug("Abstract: " + params("abstract")(0))
+//          Logger.debug("Abstract: " + params("abstract")(0))
           val stmt = conn.createStatement
           var query = new StringBuffer
           query.append("SPARQL ")
@@ -95,7 +98,7 @@ object Search extends Controller {
       case None => {
       }
     }
-    Logger.debug("inputMap: " + inputMap.toString())
+//    Logger.debug("inputMap: " + inputMap.toString())
     if (oformat != "") {
       val csv = new StringBuffer
       for (items <- retSeq) {
@@ -107,5 +110,8 @@ object Search extends Controller {
       Ok(views.html.search("Search", retSeq, inputMap))
     }
   }
-
+*/
+  def index = Action {
+    Ok("It works!")
+  }
 }
