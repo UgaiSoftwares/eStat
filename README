@@ -1,4 +1,23 @@
-This is your new Play application
-=================================
+eStat
+=====
 
-This file will be packaged with your application, when using `activator dist`.
+Build requirements: JDK 11 or newer. Maven 3.9.16 is downloaded automatically
+by the Maven Wrapper (use mvnw.cmd on Windows).
+
+Build and run tests:
+
+    ./mvnw clean verify
+
+Run the application on http://localhost:9000:
+
+    ./mvnw compile exec:java -Dplay.http.secret.key=replace-with-your-secret
+
+The build compiles Scala sources in app/, generates Twirl templates and the
+injected router from conf/routes, and packages conf/ and public/ resources.
+Dependencies retain Play 2.9.7 and Scala 2.13.16. The Virtuoso JDBC and Jena
+integration jars are supplied in lib/. Running requires access to the Virtuoso
+database configured in conf/application.conf and a deployment-specific Play secret
+key passed as shown above; tests disable that database.
+
+The packaged application jar is target/eStat-1.0-SNAPSHOT.jar. It requires the
+runtime dependencies on the classpath; it is not a standalone executable jar.

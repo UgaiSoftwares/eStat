@@ -1,14 +1,18 @@
-# .github/workflows/dependency-graph.yml
 name: Update Dependency Graph
 on:
   push:
-    branches:
-      - master2 # default branch of the project
+    branches: [master2]
+permissions:
+  contents: write
 jobs:
   dependency-graph:
-    name: Update Dependency Graph
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: sbt/setup-sbt@v1
-      - uses: scalacenter/sbt-dependency-submission@v2.3.1
+      - uses: actions/checkout@v5.0.0
+      - uses: actions/setup-java@v5.0.0
+        with:
+          java-version: '11'
+          distribution: temurin
+          cache: maven
+      - run: ./mvnw -B compile
+      - uses: advanced-security/maven-dependency-submission-action@v5
