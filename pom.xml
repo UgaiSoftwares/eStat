@@ -6,7 +6,7 @@
   <version>1.0-SNAPSHOT</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <scala.version>2.13.16</scala.version>
+    <scala.version>2.13.18</scala.version>
     <play.version>2.9.12</play.version>
     <twirl.version>1.6.10</twirl.version>
     <maven.compiler.release>11</maven.compiler.release>
